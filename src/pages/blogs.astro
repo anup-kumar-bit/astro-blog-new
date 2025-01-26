@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/card.astro';
+
+const numberProp = 15;
+const blogProps={
+    number:15,
+    Title:"Explore some trending articles",
+    button:false
+}
+---
+
+<Layout>
+    <Card quantity={blogProps}/>
+</Layout>
