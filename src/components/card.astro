@@ -1,0 +1,73 @@
+---
+// Fetch posts from the Ghost API at build time
+const response = await fetch(
+  "https://demo.ghost.io/ghost/api/content/posts/?key=22444f78447824223cefc48062"
+);
+const data = await response.json();
+const posts = data.posts;
+---
+
+<div class="border-2 flex flex-col items-center justify-center w-screen">
+  <div class="bordser-2 w-full 2xl:w-[99rem] py-3 my-4 p-4 lg:px-10 2xl:px-3 rounded-sm 2xl:bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100">
+    <p class="font-mono text-lg sm:text-xl ml-1 text-[#002044]">Browse and read the latest stuff</p>
+    <h2 class="flex justify-start text-3xl xl:text-5xl font-sans font-extrabold text-[#002044]">Latest Stories</h2>
+  </div>
+  <div
+    class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3 border-2 py-5 sm:p-5 2xl:w-[97rem]"
+  >
+    {
+      posts.slice(0, 6).map((post: any) => (
+        <div class="flex  justify-center px-2 sm:p-0">
+          <div class="max-w-md bg-white border border-gray-200 rounded-none shadow-sm dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+              <img
+                class="sm:rounded-t-md"
+                src={post.feature_image}
+                alt={post.title}
+              />
+            </a>
+            <div class="p-5">
+              <a href="#">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {post.title}
+                </h5>
+              </a>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                {post.excerpt.slice(0, 152)}
+              </p>
+              <a
+                href={post.url}
+                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Read more
+                <svg
+                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <div class="border-2 flex justify-center items-center">
+    <button
+      type="button"
+      class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+    >
+      Read More
+    </button>
+  </div>
+</div>
