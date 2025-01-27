@@ -9,6 +9,7 @@ const posts = data.posts;
 
 const { quantity } = Astro.props;
 const button = quantity?.button ?? true;
+const button1 = quantity?.button1 ?? false;
 // console.log(button)
 // console.log(quantity)
 ---
@@ -23,9 +24,9 @@ const button = quantity?.button ?? true;
   >
     {
       posts.slice(0, quantity?.number | 6 ).map((post: any) => (
-        <div class="flex  justify-center px-2 sm:p-0">
-          <div class="max-w-md bg-white border border-gray-200 rounded-none shadow-sm dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
+        <div class="flex  justify-center px-2 my-5 sm:p-0 ">
+          <div class="max-w-md bg-white rounded-none shadow-sm dark:bg-gray-800 dark:border-gray-700 lg:hover:scale-105 transition-all ease-in ">
+            <a href="/blogs">
               <img
                 class="sm:rounded-t-md"
                 src={post.feature_image}
@@ -33,7 +34,7 @@ const button = quantity?.button ?? true;
               />
             </a>
             <div class="p-5">
-              <a href="#">
+              <a href="/blogs">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   {post.title}
                 </h5>
@@ -42,8 +43,8 @@ const button = quantity?.button ?? true;
                 {post.excerpt.slice(0, 152)}
               </p>
               <a
-                href={post.url}
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                href={`/blogs/${post.slug}`} 
+                class={`${button1?"flex":"hidden"} inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800`}
               >
                 Read more
                 <svg
