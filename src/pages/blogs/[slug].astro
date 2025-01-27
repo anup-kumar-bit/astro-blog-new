@@ -33,7 +33,7 @@ console.log(slug);
 
 <Layout>
 
-    <div role="status" class="h-auto w-full flex justify-center flex-col xl:flex-row  bg-gradient-to-r from-gray-50 via-gray-0   to-gray-50 pt-5 pb-5  ">
+    <div role="status" class="h-auto w-full md:w-full flex justify-center flex-col xl:flex-row  bg-gradient-to-r from-gray-50 via-gray-0   to-gray-50 pt-5 pb-5  ">
         <!-- Image Box - Takes 3/5 of screen height -->
         <div class="flex flex-col items-center justify-between w-full  rounded-sm  dark:bg-gray-700 overflow-hidden p-4  ">
             <img src={url} alt="Image" class="w-full h-full object-cover rounded-lg">
@@ -45,8 +45,8 @@ console.log(slug);
         <div class="w-full px-5 py-3 pt-5  mt-3  mr-3 h-full rounded-m bg-white">
             <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">{finded[0].title}</h1>
             <p class="font-mono font-semibold text-gray-900 mb-2">"" A library theme for organizing large content archives   {finded[0].custom_excerpt} "    "</p>
-            <p class="font-serif font-light text-gray-600 mb-2  ">{finded[0].excerpt}</p>
-            <p class="font-thin text-gray-7 00">{(finded[0].html).slice(1,2520)}</p>
+            <p class="font-serif font-light text-gray-600 mb-2 break-words">{finded[0].excerpt}</p>
+            <p class="font-thin text-gray-7 break-words">{(finded[0].html).slice(1,2520)}</p>
             <br>            
             <!-- Button -->
             <a class="text-blue-600  font-bold active:text-blue-300 flex items-center" href="/blogs">
